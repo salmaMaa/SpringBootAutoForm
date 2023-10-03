@@ -4,6 +4,7 @@ package com.example.projetSpring.service;
 import com.example.projetSpring.dao.IngredientDAO;
 import com.example.projetSpring.entity.Ingredient;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -31,6 +32,11 @@ public class IngredientService {
     }
 
     public List<Ingredient> getLesIngredients(){
-        return dao.findAll();
+        return dao.findAll(Sort.by(Sort.Direction.ASC, "codeing"));
+    }
+
+    public String updateIngredient(Ingredient ingredient){
+        dao.save(ingredient);
+        return "Ingrédient modifié à la base de donnée : " + ingredient.getNoming();
     }
 }

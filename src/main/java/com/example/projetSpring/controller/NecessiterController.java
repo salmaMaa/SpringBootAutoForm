@@ -22,8 +22,8 @@ public class NecessiterController {
     @PostMapping("/addNecessiter")
     public String addNecessiter(@RequestBody DTONecessiter DtoNecessiter){
 
-        Ingredient monIng = serviceIngredient.getIngredientById(DtoNecessiter.getCodeing());
-        Cocktail monCock = serviceCocktail.getCocktailById(DtoNecessiter.getNumco());
+        Ingredient monIng = serviceIngredient.getIngredientById(Integer.parseInt(DtoNecessiter.getCodeing()));
+        Cocktail monCock = serviceCocktail.getCocktailById(Integer.parseInt(DtoNecessiter.getNumco()));
         PKnecessiter laPk = new PKnecessiter(monIng,monCock);
         Necessiter leNec = new Necessiter(laPk,DtoNecessiter.getQuantite());
         return serviceNecessiter.addNecessiter(leNec);
@@ -37,8 +37,8 @@ public class NecessiterController {
     @PutMapping("/updateNecessiter")
     public String updateNecessiter(@RequestBody DTONecessiter DtoNecessiter){
 
-        Ingredient monIng = serviceIngredient.getIngredientById(DtoNecessiter.getCodeing());
-        Cocktail monCock = serviceCocktail.getCocktailById(DtoNecessiter.getNumco());
+        Ingredient monIng = serviceIngredient.getIngredientById(Integer.parseInt(DtoNecessiter.getCodeing()));
+        Cocktail monCock = serviceCocktail.getCocktailById(Integer.parseInt(DtoNecessiter.getNumco()));
         PKnecessiter laPk = new PKnecessiter(monIng,monCock);
         Necessiter leNec = new Necessiter(laPk,DtoNecessiter.getQuantite());
         return serviceNecessiter.updateNecessiter(leNec);
@@ -53,6 +53,7 @@ public class NecessiterController {
         PKnecessiter laPk = new PKnecessiter(monIng,monCock);
         Necessiter leNec = serviceNecessiter.getNecessiterByPK(laPk);
 
+        System.out.println(leNec.getQteutilisee());
         return serviceNecessiter.deleteNecessiter(leNec);
     }
 

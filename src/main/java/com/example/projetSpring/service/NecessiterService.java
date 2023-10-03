@@ -29,22 +29,16 @@ public class NecessiterService {
 
     public Necessiter getNecessiterByPK(PKnecessiter pk){
 
-        List<Necessiter> LesNecessiter = dao.findAll();
-        for (Necessiter necessiter : LesNecessiter){
-            if (necessiter.getPrimaryKey() == pk){
-                return necessiter;
-            }
-        }
-        return null;
+        Necessiter necessiter = dao.getNecessiterByPrimaryKey(pk);
 
+        return necessiter;
     }
-
 
     public String updateNecessiter(Necessiter necessit){
         dao.save(necessit);
         return "Ligne necessiter modifiée code ing: " +
-                necessit.getPrimaryKey().getUnIng() +
-                "code cocktail : "+necessit.getPrimaryKey().getUnCock();
+                necessit.getPrimaryKey().getUnIng().getCodeing() +
+                "code cocktail : "+necessit.getPrimaryKey().getUnCock().getNumco();
     }
 
     public List<Necessiter> getLesNecessiter(){

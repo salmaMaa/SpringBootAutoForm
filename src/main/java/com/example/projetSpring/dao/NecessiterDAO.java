@@ -12,4 +12,6 @@ public interface NecessiterDAO  extends JpaRepository<Necessiter, PKnecessiter> 
 
 
     List<Necessiter> findAllByPrimaryKeyCocktail  (Cocktail cocktail);
+
+    Necessiter getNecessiterByPrimaryKey(PKnecessiter pKnecessiter);
 }

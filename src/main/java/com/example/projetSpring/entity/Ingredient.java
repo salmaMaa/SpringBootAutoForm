@@ -11,7 +11,6 @@ public class Ingredient implements Serializable {
 
     //Properties
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int codeing;
     @Column
     private String noming;
